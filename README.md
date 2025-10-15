@@ -140,8 +140,6 @@ Si la fecha inicial está fuera del horario laboral o en un día no hábil, se a
 working-days-api/
 ├── src/
 │   ├── index.ts                          # Punto de entrada (servidor Express)
-│   ├── routes/
-│   │   └── calculateRoute.ts             # Ruta GET /calculate
 │   ├── controllers/
 │   │   └── calculateController.ts        # Controlador principal
 │   ├── services/
