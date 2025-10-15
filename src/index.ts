@@ -1,15 +1,24 @@
-import express, { Application } from 'express';
+import express, { Application, Request, Response } from 'express';
 import { ENV } from './config/env';
-import { loadHolidays } from './utils/holidays';
+import { loadHolidays, getHolidays } from './utils/holidays';
 import { calculateController } from './controllers/calculateController';
-import { getHolidays } from './utils/holidays';
 
 const app: Application = express();
 
 // Middleware
 app.use(express.json());
 
-app.get('/debug/holidays', (_req, res) => {
+// Store server info
+const serverInfo = {
+  status: 'initializing',
+  holidaysCount: 0,
+  port: ENV.PORT,
+  timezone: ENV.TIMEZONE,
+  startTime: new Date().toISOString()
+};
+
+// Debug endpoint - Ver festivos cargados
+app.get('/debug/holidays', (_req: Request, res: Response) => {
   const holidays = Array.from(getHolidays()).sort();
   res.json({
     count: holidays.length,
@@ -17,20 +26,40 @@ app.get('/debug/holidays', (_req, res) => {
   });
 });
 
-// Ruta principal (root)
-app.get('/', (_req, res) => {
-  const holidays = Array.from(getHolidays());
-  res.type('text/plain').send(
-    `Loading Colombian holidays...\n` +
-    `✓ Loaded ${holidays.length} Colombian holidays\n` +
-    `✓ Server running on port ${ENV.PORT}\n` +
-    `✓ Timezone: ${ENV.TIMEZONE}\n` +
-    `✓ Ready to accept requests`
-  );
-});
+// Main endpoint - handles root with info or calculation
+app.get(/.*/, (req: Request, res: Response) => {
+  // If no query parameters, show server info
+  if (Object.keys(req.query).length === 0) {
+    return res.json({
+      message: 'Working Days API - Colombia',
+      status: serverInfo.status,
+      info: {
+        holidaysLoaded: serverInfo.holidaysCount,
+        port: serverInfo.port,
+        timezone: serverInfo.timezone,
+        startTime: serverInfo.startTime,
+        uptime: process.uptime() + ' seconds'
+      },
+      usage: {
+        endpoint: 'GET /',
+        parameters: {
+          days: 'number (optional) - Business days to add',
+          hours: 'number (optional) - Business hours to add',
+          date: 'string (optional) - Start date in UTC ISO 8601 format with Z suffix'
+        },
+        examples: [
+          '/?hours=1',
+          '/?days=1&hours=4',
+          '/?date=2025-10-17T22:00:00.000Z&hours=1'
+        ]
+      },
+      docs: 'https://github.com/drawnick1214/pt_capta_workingdays'
+    });
+  }
 
-// Routes - handle GET requests on any path
-app.get(/.*/, calculateController);
+  // If has query parameters, calculate working date
+  return calculateController(req, res);
+});
 
 // Start server
 async function startServer(): Promise<void> {
@@ -38,6 +67,11 @@ async function startServer(): Promise<void> {
     // Load Colombian holidays before starting
     console.log('Loading Colombian holidays...');
     await loadHolidays();
+    
+    serverInfo.holidaysCount = getHolidays().size;
+    serverInfo.status = 'ready';
+    
+    console.log(`✓ Loaded ${serverInfo.holidaysCount} Colombian holidays`);
     
     // Start Express server
     app.listen(ENV.PORT, () => {
@@ -50,6 +84,5 @@ async function startServer(): Promise<void> {
     process.exit(1);
   }
 }
-
 
 startServer();
