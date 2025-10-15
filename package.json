@@ -8,21 +8,26 @@
     "lint": "ts-standard",
     "tsc": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "built": "tsc"
+    "build": "tsc"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "devDependencies": {
+    "@types/aws-lambda": "^8.10.155",
     "@types/express": "^5.0.3",
     "@types/luxon": "^3.7.1",
     "@types/node": "^24.7.2",
+    "esbuild": "^0.25.11",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.9.3"
   },
   "dependencies": {
+    "@vendia/serverless-express": "^4.12.6",
+    "aws-cdk-lib": "^2.220.0",
     "axios": "^1.12.2",
+    "constructs": "^10.4.2",
     "express": "^5.1.0",
     "luxon": "^3.7.2"
   }
