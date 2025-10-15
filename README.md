@@ -22,8 +22,8 @@ API REST para calcular fechas hábiles en Colombia, considerando días festivos,
 1. Clonar el repositorio:
 
 ```bash
-git clone <url-del-repositorio>
-cd working-days-api
+git clone git@github.com:drawnick1214/pt_capta_workingdays.git
+cd pt_capta_workingdays
 ```
 
 2. Instalar dependencias:
