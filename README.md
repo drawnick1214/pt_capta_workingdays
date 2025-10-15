@@ -149,7 +149,7 @@ working-days-api/
 │   │   ├── timezone.ts                   # Conversión UTC ↔ America/Bogota
 │   │   └── dateUtils.ts                  # Helpers: isWorkDay, addWorkHours
 │   ├── types/
-│   │   └── index.d.ts                    # Tipos e interfaces globales
+│   │   └── types.d.ts                    # Tipos e interfaces globales
 │   └── config/
 │       └── env.ts                        # Variables de entorno
 ├── build/                                # Código compilado (generado)
