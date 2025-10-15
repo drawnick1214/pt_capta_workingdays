@@ -17,6 +17,18 @@ app.get('/debug/holidays', (_req, res) => {
   });
 });
 
+// Ruta principal (root)
+app.get('/', (_req, res) => {
+  const holidays = Array.from(getHolidays());
+  res.type('text/plain').send(
+    `Loading Colombian holidays...\n` +
+    `✓ Loaded ${holidays.length} Colombian holidays\n` +
+    `✓ Server running on port ${ENV.PORT}\n` +
+    `✓ Timezone: ${ENV.TIMEZONE}\n` +
+    `✓ Ready to accept requests`
+  );
+});
+
 // Routes - handle GET requests on any path
 app.get(/.*/, calculateController);
 
