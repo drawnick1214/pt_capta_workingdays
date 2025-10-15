@@ -75,19 +75,19 @@ Calcula una fecha hábil sumando días y/o horas hábiles.
 **Ejemplo 1: Sumar 1 hora desde ahora**
 
 ```bash
-curl "http://localhost:3000/calculate?hours=1"
+curl "http://localhost:3000/?hours=1"
 ```
 
 **Ejemplo 2: Sumar 1 día y 4 horas**
 
 ```bash
-curl "http://localhost:3000/calculate?days=1&hours=4"
+curl "http://localhost:3000/?days=1&hours=4"
 ```
 
 **Ejemplo 3: Con fecha específica**
 
 ```bash
-curl "http://localhost:3000/calculate?date=2025-04-10T15:00:00.000Z&days=5&hours=4"
+curl "http://localhost:3000/?date=2025-04-10T15:00:00.000Z&days=5&hours=4"
 ```
 
 #### Respuesta Exitosa (200 OK)
