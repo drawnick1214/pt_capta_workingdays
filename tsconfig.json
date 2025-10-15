@@ -1,0 +1,53 @@
+{
+  // Visit https://aka.ms/tsconfig to read more about this file
+  "compilerOptions": {
+    // File Layout
+    "rootDir": "./src",
+    "outDir": "./build",
+
+    // Environment Settings
+    // See also https://aka.ms/tsconfig/module
+    "module": "commonjs",
+    "target": "es2020",
+    "types": ["node"],
+    // For nodejs:
+    // "lib": ["esnext"],
+    // "types": ["node"],
+    // and npm install -D @types/node
+
+    // Other Outputs
+    "sourceMap": true,
+    "declaration": true,
+    "declarationMap": true,
+    "esModuleInterop": true,
+    "skipDefaultLibCheck": true,
+    // Stricter Typechecking Options
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+
+    // Style Options
+    "noImplicitReturns": true,
+    // "noImplicitOverride": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    // "noPropertyAccessFromIndexSignature": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "moduleResolution": "node",
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+
+    // Recommended Options
+    "strict": true,
+    "jsx": "react-jsx",
+    // "verbatimModuleSyntax": true,
+    "isolatedModules": true,
+    "noUncheckedSideEffectImports": true,
+    "moduleDetection": "force",
+    "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true,
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "build"]
+}
