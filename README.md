@@ -29,10 +29,7 @@ cd working-days-api
 2. Instalar dependencias:
 
 ```bash
-npm init -y
-npm install typescript -D
-npm install express axios luxon
-
+npm install
 ```
 
 3. Compilar TypeScript:
