@@ -1,4 +1,6 @@
 # API de Fechas Hábiles - Colombia
+![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
+![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge)
 
 API REST para calcular fechas hábiles en Colombia, considerando días festivos, horarios laborales y zona horaria local.
 
@@ -210,3 +212,19 @@ Para agregar nuevas funcionalidades o modificar la lógica:
 ## 📄 Licencia
 
 MIT
+
+## 👤 Autor
+
+**Nick Díaz**
+
+- LinkedIn: [tu-perfil]([https://linkedin.com/in/tu-perfil](https://www.linkedin.com/in/drawnick991214/))
+- GitHub: [@tu-usuario]([https://github.com/tu-usuario](https://github.com/drawnick1214))
+- Email: enickdiazc@gmail.com
+
+---
+
+## 🙏 Agradecimientos
+
+- Gracias por la oportunidad de resolver este desafío técnico
+
+---
